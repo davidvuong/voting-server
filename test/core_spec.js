@@ -51,7 +51,7 @@ describe('application logic', () => {
             }));
         });
 
-        it('put back into entries list when tied', () => {
+        it('puts back into entries list when tied', () => {
             const state = Immutable.fromJS({
                 vote: {
                     pair: ['David', 'Denise'],
@@ -66,6 +66,21 @@ describe('application logic', () => {
                     pair: ['Bob', 'Kevin']
                 },
                 entries: ['Steve', 'David', 'Denise']
+            }));
+        });
+
+        it('picks a winner when there is only one entry left', () => {
+            const state = Immutable.fromJS({
+                vote: {
+                    pair: ['David', 'Denise'],
+                    tally: { 'David': 5, 'Denise': 1 }
+                },
+                entries: []
+            });
+            const nextState = next(state);
+
+            expect(nextState).to.equal(Immutable.fromJS({
+                winner: 'David'
             }));
         });
     });

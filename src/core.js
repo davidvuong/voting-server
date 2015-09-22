@@ -30,7 +30,7 @@ export function next(state) {
     // Get the queued of entries list and add the winner from the current pair.
     const entries = state.get('entries').concat(_getWinners(state.get('vote')));
 
-    // NOTE: The following won't work:
+    // NOTE: The following won't work ^:
     //
     // ```
     // const entries = state.get('entries');
@@ -41,6 +41,17 @@ export function next(state) {
     // 2. `concat(...)` creates a *new* version of state.get('entries');
     // 3. `const entries` still references the original entries (not the updated).
 
+    // There's only one entry left, winner!
+    //
+    // It's better to remove the unused keys instead of return a new state
+    // `Map({ winner: entries.first() }` (future proofing). At some point we'll have
+    // some unrelated data and that shouldn't be removed or changed. It should
+    // just pass through.
+    if (entries.size === 1) {
+        return state.remove('vote')
+            .remove('entries')
+            .set('winner', entries.first());
+    }
     return Immutable.fromJS({
         vote: { pair: entries.take(2) },
         entries: entries.skip(2)
