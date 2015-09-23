@@ -1,6 +1,8 @@
 import Immutable from 'immutable';
 import {Map, List} from 'immutable';
 
+export const INITIAL_STATE = Map();
+
 /* Loads the state with a list of `entries` to vote on. */
 export function setEntries(state, entries) {
     return state.set('entries', List(entries));
