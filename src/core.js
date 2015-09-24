@@ -30,7 +30,9 @@ function _getWinners(vote) {
 /* Determines what the next pair of "things" to vote for are. */
 export function next(state) {
     // Get the queued of entries list and add the winner from the current pair.
-    const entries = state.get('entries').concat(_getWinners(state.get('vote')));
+    const entries = state
+        .get('entries')
+        .concat(_getWinners(state.get('vote')));
 
     // NOTE: The following won't work ^:
     //
@@ -50,7 +52,8 @@ export function next(state) {
     // some unrelated data and that shouldn't be removed or changed. It should
     // just pass through.
     if (entries.size === 1) {
-        return state.remove('vote')
+        return state
+            .remove('vote')
             .remove('entries')
             .set('winner', entries.first());
     }
@@ -68,7 +71,7 @@ export function vote(state, entry) {
     // exist). If `entry` doesn't exist, set the default to `0`, otherwise call
     // the anonymous function `tally => tally + 1`.
     return state.updateIn(
-        ['vote', 'tally', entry],
+        ['tally', entry],
         0,
         tally => tally + 1
     );

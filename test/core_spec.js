@@ -88,38 +88,26 @@ describe('application logic', () => {
     describe('vote', () => {
         it('creates a tally when one does not exist', () => {
             const state = Immutable.fromJS({
-                vote: {
-                    pair: ['David', 'Denise']
-                },
-                entries: []
+                pair: ['David', 'Denise']
             });
             const nextState = vote(state, 'David');
 
             expect(nextState).to.equal(Immutable.fromJS({
-                vote: {
-                    pair: ['David', 'Denise'],
-                    tally: { 'David': 1 }
-                },
-                entries: []
+                pair: ['David', 'Denise'],
+                tally: { 'David': 1 }
             }));
         });
 
         it('adds to an existing tally if it already exists', () => {
             const state = Immutable.fromJS({
-                vote: {
-                    pair: ['David', 'Denise'],
-                    tally: { 'David': 5, 'Denise': 3 }
-                },
-                entries: []
+                pair: ['David', 'Denise'],
+                tally: { 'David': 5, 'Denise': 3 }
             });
             const nextState = vote(state, 'Denise');
 
             expect(nextState).to.equal(Immutable.fromJS({
-                vote: {
-                    pair: ['David', 'Denise'],
-                    tally: { 'David': 5, 'Denise': 4 }
-                },
-                entries: []
+                pair: ['David', 'Denise'],
+                tally: { 'David': 5, 'Denise': 4 }
             }));
         });
     });
