@@ -1,6 +1,6 @@
-## Welcome to voting-server
+## voting-server
 
-This is a simple repository containing code I had written based on this [tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html).
+This repository contains the server-side code written based on this [tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html). You can find the corresponding client-side code [here](https://github.com/davidvuong/voting-client).
 
 ### Setup and install
 
@@ -13,9 +13,16 @@ cd voting-server
 npm install
 ```
 
+Run the server:
+
+```
+npm run server
+```
+
 ### Testing
 
 ```
 npm run test
 npm run test:watch
 ```
+
