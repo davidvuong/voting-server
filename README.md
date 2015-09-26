@@ -16,7 +16,7 @@ npm install
 Run the server:
 
 ```
-npm run server
+npm run start
 ```
 
 ### Testing
@@ -25,4 +25,3 @@ npm run server
 npm run test
 npm run test:watch
 ```
-

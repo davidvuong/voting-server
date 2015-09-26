@@ -4,9 +4,13 @@
   "description": "Simple voting system, following this tutorial: http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html",
   "main": "index.js",
   "scripts": {
-    "server": "babel-node src/index.js",
+    "start": "babel-node src/index.js",
     "test": "mocha --compilers js:babel/register --require ./test/test_helper.js --recursive",
     "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidvuong/voting-server.git"
   },
   "author": "David Vuong <david.vuong256@gmail.com>",
   "license": "MIT",
